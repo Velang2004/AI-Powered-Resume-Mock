@@ -1,0 +1,26 @@
+-- Create Database
+CREATE DATABASE IF NOT EXISTS recruitment_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE recruitment_db;
+
+-- Users Table (Starts at User ID 101)
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) AUTO_INCREMENT = 101;
+
+-- Login Audit & Session Tracker Table
+CREATE TABLE IF NOT EXISTS login_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip_address VARCHAR(45) DEFAULT '127.0.0.1',
+    user_agent VARCHAR(255) DEFAULT 'Browser',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

@@ -1,0 +1,6 @@
+{
+  "name": "AI Resume & Recruitment Intelligence Platform",
+  "description": "Full-stack AI-powered resume builder, ATS scoring, multi-tier verified authentication (Email link + Mobile OTP), job matching, Kanban application tracker, real-time voice mock interviews, and recruitment intelligence analytics.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
